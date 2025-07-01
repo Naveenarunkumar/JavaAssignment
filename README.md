@@ -22,7 +22,7 @@ If a customer makes a transaction of **$120**:
 ---
 ##💻 Tech Stack
 
-- Java 23
+- Java 17
 - Spring Boot 3.5.3
 - Maven
 - JUnit 5 (unit & integration testing)
@@ -36,7 +36,7 @@ If a customer makes a transaction of **$120**:
 
 1. Clone the repository:
    ```bash
-     https://github.com/muskan11709298/java_Assignment_2025.git
+     https://github.com/Naveenarunkumar/JavaAssignment.git
      cd reward-points-service
 2. Build the project:
    ```bash
@@ -91,19 +91,6 @@ Response:
   "totalRewards": 210
 }
 ```
-3. POST /api/rewards/add-transaction
-- Description: Add a new transaction.
-Request Body:
-```bash
-{
-  "customerId": "cust3",
-  "amount": 120,
-  "date": "2025-03-15"
-}
-```
-Response:
-```bash
-"Transaction added successfully"
 ```
 
 
@@ -111,12 +98,33 @@ Response:
 This project includes:
 
 -Unit tests using Mockito and JUnit
--Integration tests for controllers and services
--Tests cover both valid and invalid transactions
+-Tests for controllers and services
+-Tests covers reward calculation logic for customer and Tests for REST API end points 
+& HTTP Requests
+
 To run tests:
 ```bash
 mvn test
 ```
+
+
+🧠 What’s Tested
+
+🔸 RewardServiceTest
+- ✅ Calculates rewards for all customers
+- ✅ Calculates rewards for a specific customer
+- ✅ Handles unknown or null customer IDs gracefully
+- ✅ Ensures no rewards are returned for invalid input
+
+
+🔸 RewardControllerTest
+- ✅ Returns 200 OK with rewards for all customers
+- ✅ Returns 204 No Content when no rewards exist
+- ✅ Returns 200 OK for valid customer ID
+- ✅ Returns 204 No Content for unknown customer ID
+- ✅ Verifies interaction with the service layer using mock
+
+
 
 ## 📂 Project Structure
 ```bash
@@ -132,10 +140,8 @@ com.rewards.rewards_points_service
 │   ├── InvalidTransactionException.java
 │   └── GlobalExceptionHandler.java
 └── test
-    ├── TestRewardControllerUnitTesting.java
-    ├── TestRewardControllerIntegrationTesting.java
-    ├── TestRewardServiceIntegrationTesting.java
-    └── TestRewardServiceUnitTesting.java
+    ├── RewardController.java
+    ├── RewardService.java
 ```
 Error Handling
 - InvalidTransactionException: Thrown for negative transaction amounts.
